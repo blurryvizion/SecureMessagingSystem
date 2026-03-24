@@ -32,7 +32,7 @@ public class ChatServer {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Server error: " + e.getMessage());
         }
     }
 }

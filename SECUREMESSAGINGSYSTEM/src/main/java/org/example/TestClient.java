@@ -1,6 +1,8 @@
 package org.example;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class TestClient {
@@ -75,7 +77,7 @@ public class TestClient {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Server error: " + e.getMessage());
         }
     }
 }
