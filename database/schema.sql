@@ -1,26 +1,29 @@
 CREATE DATABASE IF NOT EXISTS chatdb;
 USE chatdb;
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE messages (
+CREATE TABLE IF NOT EXISTS messages (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    sender VARCHAR(50),
-    receiver VARCHAR(50),
-    content TEXT,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    sender VARCHAR(50) NOT NULL,
+    receiver VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    delivered BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE chat_groups (
+CREATE TABLE IF NOT EXISTS chat_groups (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    group_name VARCHAR(50)
+    group_name VARCHAR(100) UNIQUE NOT NULL,
+    created_by VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE group_members (
-    group_name VARCHAR(50),
-    username VARCHAR(50)
+CREATE TABLE IF NOT EXISTS group_members (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    group_name VARCHAR(100) NOT NULL,
+    username VARCHAR(50) NOT NULL
 );
